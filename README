@@ -1,0 +1,17 @@
+Hosted at: http://github.com/Hexstream/hextml
+
+
+This library makes it easy to build a representation of HTML as lisp objects, which you can then inspect/transform/output.
+There is an included optimizer and compiler which produces highly efficient code.
+A lot of code which would normally be considered "dynamic" is treated as if it was "static" (ex: basic branching and looping).
+
+It also includes a macro to directly output HTML with lisp code embedded (the model currently used by most lisp HTML libraries). Consecutive static strings are joined together into a single output operation for efficiency and macroexpansion readability.
+
+The syntax for both these modes (build VS output) is almost exactly the same, resulting in less cognitive context-switching.
+
+
+Of interest: in more than 99.5% of cases, you don't need to explicitly re-enter the HTML context after having embedded dynamic lisp code, the parsers figure it out automatically and reliably.
+
+
+This library is under the MIT license so you can do basically whatever with it.
+See the LICENSE file for details.
