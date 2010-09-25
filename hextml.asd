@@ -8,7 +8,8 @@
 
 (defsystem hextml
   :author "Hexstream"
-  :depends-on (cl-hexstream
+  :depends-on (iterate
+	       com.hexstreamsoft.lib
 	       com.hexstreamsoft.lib.shared-html-css
 	       hexttp-config
 	       defmacro-system

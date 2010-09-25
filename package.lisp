@@ -1,14 +1,18 @@
 (in-package #:cl-user)
 
 (defpackage #:hextml_annotation
-  (:use #:cl-hexstream)
+  (:use #:cl
+	#:iterate
+	#:com.hexstreamsoft.lib)
   (:export #:hextml-annotation
 	   #:hextml-annotation-target
 	   #:make-hextml-annotation
 	   #:hextml-annotation-p))
 
 (defpackage #:hextml_html-node
-  (:use #:cl-hexstream)
+  (:use #:cl
+	#:iterate
+	#:com.hexstreamsoft.lib)
   (:export #:html-node
 	   #:html-node-type
 	   #:html-node-attributes
@@ -18,7 +22,9 @@
 	   #:with-html-node-readers))
 
 (defpackage #:hextml_html-id
-  (:use #:cl-hexstream)
+  (:use #:cl
+	#:iterate
+	#:com.hexstreamsoft.lib)
   (:export #:html-id
 	   #:html-id-id
 	   #:make-html-id
@@ -29,7 +35,9 @@
 	   #:html-id-to-string))
 
 (defpackage #:hextml_html-if
-  (:use #:cl-hexstream
+  (:use #:cl
+	#:iterate
+	#:com.hexstreamsoft.lib
 	#:com.hexstreamsoft.lib.shared-html-css
 	#:hexttp-config)
   (:export #:html-if
@@ -43,7 +51,9 @@
 	   #:transform-html-if))
 
 (defpackage #:hextml_html-do
-  (:use #:cl-hexstream
+  (:use #:cl
+	#:iterate
+	#:com.hexstreamsoft.lib
 	#:com.hexstreamsoft.lib.shared-html-css
 	#:hexttp-config)
   (:export #:html-do
@@ -54,7 +64,9 @@
 	   #:make-html-do))
 
 (defpackage #:hextml_var-finder
-  (:use #:cl-hexstream
+  (:use #:cl
+	#:iterate
+	#:com.hexstreamsoft.lib
 	#:com.hexstreamsoft.lib.shared-html-css
 	#:hextml_html-node
 	#:hextml_html-if
@@ -63,7 +75,9 @@
 	   #:vars-find))
 
 (defpackage #:hextml_front
-  (:use #:cl-hexstream
+  (:use #:cl
+	#:iterate
+	#:com.hexstreamsoft.lib
 	#:com.hexstreamsoft.lib.shared-html-css
 	#:hextml_html-node
 	#:hextml_html-id
@@ -89,7 +103,9 @@
 	   #:output-html))
 
 (defpackage #:hextml_rewrite
-  (:use #:cl-hexstream
+  (:use #:cl
+	#:iterate
+	#:com.hexstreamsoft.lib
 	#:hextml_annotation
 	#:hextml_html-node
 	#:hextml_html-if
@@ -100,7 +116,9 @@
 	   #:html-rewrite))
 
 (defpackage #:hextml_resolve
-  (:use #:cl-hexstream
+  (:use #:cl
+	#:iterate
+	#:com.hexstreamsoft.lib
 	#:com.hexstreamsoft.lib.shared-html-css
 	#:hextml_rewrite
 	#:hextml_html-node
@@ -110,7 +128,9 @@
   (:export #:html-resolver))
 
 (defpackage #:hextml_optimize
-  (:use #:cl-hexstream
+  (:use #:cl
+	#:iterate
+	#:com.hexstreamsoft.lib
 	#:com.hexstreamsoft.lib.shared-html-css
 	#:hexttp-config
 	#:puri
@@ -125,7 +145,9 @@
 	   #:html-optimize-attribute-value))
 
 (defpackage #:hextml_render
-  (:use #:cl-hexstream
+  (:use #:cl
+	#:iterate
+	#:com.hexstreamsoft.lib
 	#:com.hexstreamsoft.lib.shared-html-css
 	#:hexttp-config
 	#:hextml_annotation
@@ -141,7 +163,9 @@
 	   #:html-render))
 
 (defpackage #:hextml_compile
-  (:use #:cl-hexstream
+  (:use #:cl
+	#:iterate
+	#:com.hexstreamsoft.lib
 	#:com.hexstreamsoft.lib.shared-html-css
 	#:hextml_annotation
 	#:hextml_html-node
@@ -155,7 +179,9 @@
 	   #:html-compile))
 
 (defpackage #:hextml_elements
-  (:use #:cl-hexstream
+  (:use #:cl
+	#:iterate
+	#:com.hexstreamsoft.lib
 	#:com.hexstreamsoft.lib.shared-html-css)
   (:export #:template-env
 	   #:template-env-reference
@@ -173,7 +199,9 @@
 	   #:make-template-env-subreference))
 
 (defpackage #:hextml_load
-  (:use #:cl-hexstream
+  (:use #:cl
+	#:iterate
+	#:com.hexstreamsoft.lib
 	#:hextml_front)
   (:export #:load-i18n-file))
 
