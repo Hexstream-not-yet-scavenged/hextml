@@ -98,11 +98,11 @@
 
 (defmethod html-render ((renderer html-renderer) (html html-do) stream)
   (let ((var (html-do-var html)))
-    (iter (for item in (resolve-template-env-reference (html-do-reference html)
-						       (template-env renderer)))
-	  (html-render (make-instance 'html-renderer
-				      :template-env
-				      (make-instance 'template-env
-						     :parent (template-env renderer)
-						     :bindings (list (cons var item))))
-		       (html-do-html html) stream))))
+    (dolist (item (resolve-template-env-reference (html-do-reference html)
+						  (template-env renderer)))
+      (html-render (make-instance 'html-renderer
+				  :template-env
+				  (make-instance 'template-env
+						 :parent (template-env renderer)
+						 :bindings (list (cons var item))))
+		   (html-do-html html) stream))))

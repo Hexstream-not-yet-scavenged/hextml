@@ -2,7 +2,6 @@
 
 (defpackage #:hextml_annotation
   (:use #:cl
-	#:iterate
 	#:com.hexstreamsoft.lib)
   (:export #:hextml-annotation
 	   #:hextml-annotation-target
@@ -11,7 +10,6 @@
 
 (defpackage #:hextml_html-node
   (:use #:cl
-	#:iterate
 	#:com.hexstreamsoft.lib)
   (:export #:html-node
 	   #:html-node-type
@@ -23,7 +21,6 @@
 
 (defpackage #:hextml_html-id
   (:use #:cl
-	#:iterate
 	#:com.hexstreamsoft.lib)
   (:export #:html-id
 	   #:html-id-id
@@ -36,7 +33,6 @@
 
 (defpackage #:hextml_html-if
   (:use #:cl
-	#:iterate
 	#:com.hexstreamsoft.lib
 	#:com.hexstreamsoft.lib.shared-html-css
 	#:hexttp-config)
@@ -52,7 +48,6 @@
 
 (defpackage #:hextml_html-do
   (:use #:cl
-	#:iterate
 	#:com.hexstreamsoft.lib
 	#:com.hexstreamsoft.lib.shared-html-css
 	#:hexttp-config)
@@ -65,7 +60,6 @@
 
 (defpackage #:hextml_var-finder
   (:use #:cl
-	#:iterate
 	#:com.hexstreamsoft.lib
 	#:com.hexstreamsoft.lib.shared-html-css
 	#:hextml_html-node
@@ -76,7 +70,6 @@
 
 (defpackage #:hextml_front
   (:use #:cl
-	#:iterate
 	#:com.hexstreamsoft.lib
 	#:com.hexstreamsoft.lib.shared-html-css
 	#:hextml_html-node
@@ -104,7 +97,6 @@
 
 (defpackage #:hextml_rewrite
   (:use #:cl
-	#:iterate
 	#:com.hexstreamsoft.lib
 	#:hextml_annotation
 	#:hextml_html-node
@@ -117,7 +109,6 @@
 
 (defpackage #:hextml_resolve
   (:use #:cl
-	#:iterate
 	#:com.hexstreamsoft.lib
 	#:com.hexstreamsoft.lib.shared-html-css
 	#:hextml_rewrite
@@ -129,7 +120,6 @@
 
 (defpackage #:hextml_optimize
   (:use #:cl
-	#:iterate
 	#:com.hexstreamsoft.lib
 	#:com.hexstreamsoft.lib.shared-html-css
 	#:hexttp-config
@@ -146,7 +136,6 @@
 
 (defpackage #:hextml_render
   (:use #:cl
-	#:iterate
 	#:com.hexstreamsoft.lib
 	#:com.hexstreamsoft.lib.shared-html-css
 	#:hexttp-config
@@ -164,7 +153,6 @@
 
 (defpackage #:hextml_compile
   (:use #:cl
-	#:iterate
 	#:com.hexstreamsoft.lib
 	#:com.hexstreamsoft.lib.shared-html-css
 	#:hextml_annotation
@@ -180,7 +168,6 @@
 
 (defpackage #:hextml_elements
   (:use #:cl
-	#:iterate
 	#:com.hexstreamsoft.lib
 	#:com.hexstreamsoft.lib.shared-html-css)
   (:export #:template-env
@@ -200,7 +187,6 @@
 
 (defpackage #:hextml_load
   (:use #:cl
-	#:iterate
 	#:com.hexstreamsoft.lib
 	#:hextml_front)
   (:export #:load-i18n-file))

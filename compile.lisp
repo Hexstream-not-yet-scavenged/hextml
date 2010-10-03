@@ -64,15 +64,15 @@
 	(reference (html-do-reference html))
 	(compiled (html-compile compiler (html-do-html html))))
     (lambda (renderer stream)
-      (iter (for item in (resolve-template-env-reference reference
-							 (template-env renderer)))
-	    (funcall compiled
-		     (make-instance 'html-renderer
-				    :template-env
-				    (make-instance 'template-env
-						   :parent (template-env renderer)
-						   :bindings (list (cons var item))))
-		     stream)))))
+      (dolist (item (resolve-template-env-reference reference
+						    (template-env renderer)))
+	(funcall compiled
+		 (make-instance 'html-renderer
+				:template-env
+				(make-instance 'template-env
+					       :parent (template-env renderer)
+					       :bindings (list (cons var item))))
+		 stream)))))
 
 (defmethod html-compile ((compiler html-compiler) (str string))
   (lambda (renderer stream)
@@ -101,37 +101,38 @@
 
 (defun make-html-attributes-generator (compiler attribute-alist)
   (let ((compiled
-	 (iter (for (attribute . value) in attribute-alist)
-	       (collect (let ((attribute attribute))
-			  (if (html-if-p value)
-			      (html-compile compiler
-					    (flet ((bof (branch)
-						     (lif ((html (funcall branch value)))
-							  (list (format nil " ~A=\"" attribute)
-								html
-								"\""))))
-					      (make-html-if (html-if-condition value)
-							    (bof #'html-if-then)
-							    (bof #'html-if-else))))
-			      (if (labels ((look (thing)
-					     (etypecase thing
-					       (html-if t)
-					       (list (member-if #'look thing))
-					       (t nil))))
-				    (look value))
-				  (html-compile compiler
-						(list (format nil " ~A=\"" attribute)
-						      value
-						      "\""))
-				  (etypecase attribute
-				    (string
-				     (let ((compiled-value (html-compile compiler value)))
-				       (lambda (renderer stream)
-					 (format stream " ~A=\"" attribute)
-					 (funcall compiled-value renderer stream)
-					 (write-char #\" stream))))
-				    ((eql quote)
-				     (html-compile compiler value))))))))))
+	 (mapcar (destructuring-lambda ((attribute . value))
+		   (let ((attribute attribute))
+		     (if (html-if-p value)
+			 (html-compile compiler
+				       (flet ((bof (branch)
+						(lif ((html (funcall branch value)))
+						     (list (format nil " ~A=\"" attribute)
+							   html
+							   "\""))))
+					 (make-html-if (html-if-condition value)
+						       (bof #'html-if-then)
+						       (bof #'html-if-else))))
+			 (if (labels ((look (thing)
+					(etypecase thing
+					  (html-if t)
+					  (list (member-if #'look thing))
+					  (t nil))))
+			       (look value))
+			     (html-compile compiler
+					   (list (format nil " ~A=\"" attribute)
+						 value
+						 "\""))
+			     (etypecase attribute
+			       (string
+				  (let ((compiled-value (html-compile compiler value)))
+				    (lambda (renderer stream)
+				      (format stream " ~A=\"" attribute)
+				      (funcall compiled-value renderer stream)
+				      (write-char #\" stream))))
+			       ((eql quote)
+				  (html-compile compiler value)))))))
+		 attribute-alist)))
     (lambda (renderer stream)
       (dolist (compiled compiled)
 	(funcall compiled renderer stream)))))

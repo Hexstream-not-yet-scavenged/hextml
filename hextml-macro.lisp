@@ -12,13 +12,15 @@
 
 (defun expand-caselike (operator keyform cases)
   `(,operator ,keyform
-	      ,@(iter (for (condition . body) in cases)
-		      (collect `((html-noprocess ,condition) ,@body)))))
+	      ,@(mapcar (destructuring-lambda ((condition . body))
+			  `((html-noprocess ,condition) ,@body))
+			cases)))
 
 (defun expand-letlike (operator bindings body)
-  `(,operator ,(iter (for binding in bindings)
-		     (collect (if (consp binding)
-				  (cons `(html-noprocess ,(car binding))
-					(cdr binding))
-				  `(html-noprocess ,binding))))
+  `(,operator ,(mapcar (lambda (binding)
+			 (if (consp binding)
+			     (cons `(html-noprocess ,(car binding))
+				   (cdr binding))
+			     `(html-noprocess ,binding)))
+		       bindings)
 	      ,@body))
