@@ -12,7 +12,7 @@
 
 (defun expand-caselike (operator keyform cases)
   `(,operator ,keyform
-	      ,@(mapcar (destructuring-lambda ((condition . body))
+	      ,@(mapalist (lambda (condition body)
 			  `((html-noprocess ,condition) ,@body))
 			cases)))
 

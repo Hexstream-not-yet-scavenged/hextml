@@ -36,17 +36,17 @@
     `(make-instance 'html-node
       :type ,type
       :attributes (list
-		   ,@(mapcar (destructuring-lambda ((attribute . value))
-			       `(cons ,attribute
-				      ,(cond ((and (consp value)
-						   (eq (first value) 'boolean))
-					      `(make-html-if ,(second value)
-							     ,(lif ((html (cddr value)))
-								   `(list ,@(mapcar #'html-build
-										    html))
-								   attribute)))
+		   ,@(mapalist (lambda (attribute value)
+				 `(cons ,attribute
+					,(cond ((and (consp value)
+						     (eq (first value) 'boolean))
+						`(make-html-if ,(second value)
+							       ,(lif ((html (cddr value)))
+								     `(list ,@(mapcar #'html-build
+										      html))
+								     attribute)))
 					;lazy shortcut alert!
-					     (t (html-build value)))))
+					       (t (html-build value)))))
 			     attributes))
       :children (list ,@(mapcar #'html-build children)))))
 

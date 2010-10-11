@@ -51,8 +51,9 @@
     (etypecase id
       (string id)
       (cons (with-output-to-string (string)
-	      (let ((first-time-p t))
+	      (for* ((first-time-p = t then nil))
 		(dolist (part id)
+		  (step*)
 		  (if (not first-time-p)
 		      (write-char #\_ string))
 		  (etypecase part
@@ -61,5 +62,4 @@
 		    (cons (dolist (subscript part)
 			    (if (not first-time-p)
 				(write-char #\_ string))
-			    (princ subscript string))))
-		  (setf first-time-p nil))))))))
+			    (princ subscript string)))))))))))
