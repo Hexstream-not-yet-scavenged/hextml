@@ -13,5 +13,5 @@ The syntax for both these modes (build VS output) is almost exactly the same, re
 Of interest: in more than 99.5% of cases, you don't need to explicitly re-enter the HTML context after having embedded dynamic lisp code, the parsers figure it out automatically and reliably.
 
 
-This library is under the MIT license so you can do basically whatever with it.
-See the LICENSE file for details.
+This library is in the Public Domain.
+See the UNLICENSE file for details.
