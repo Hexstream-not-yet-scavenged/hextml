@@ -1,35 +1,35 @@
-;;;; -*- mode: lisp -*-
+(asdf:defsystem #:hextml
 
-(in-package #:cl-user)
-(defpackage #:hextml.system
-  (:use #:cl #:asdf))
-(in-package #:hextml.system)
+  :author "Jean-Philippe Paradis <hexstream@gmail.com>"
 
+  ;; See the UNLICENSE file for details.
+  :license "Public Domain"
 
-(defsystem hextml
-  :author "Hexstream"
-  :depends-on (com.hexstreamsoft.lib
-	       com.hexstreamsoft.lib.shared-html-css
-	       hexttp-config
-	       defmacro-system
-	       puri)
+  :description "This library makes it easy to build a representation of HTML as lisp objects, which you can then inspect/transform/output. There is an included optimizer and compiler which produces highly efficient code. A lot of code which would normally be considered \"dynamic\" is treated as if it was \"static\" (ex: basic branching and looping)."
+
+  :depends-on (#:com.hexstreamsoft.lib
+	       #:com.hexstreamsoft.lib.shared-html-css
+	       #:hexttp-config
+	       #:defmacro-system
+	       #:puri)
+
+  :version "0.1"
+  :serial cl:t
   :components ((:file "package")
-	       (:file "annotation" :depends-on (package))
-	       (:file "html-node" :depends-on (package))
-	       (:file "html-id" :depends-on (package))
-	       (:file "html-if" :depends-on (package))
-	       (:file "html-do" :depends-on (package))
-	       (:file "var-finder" :depends-on (package html-node html-if html-do))
-	       (:file "parse" :depends-on (package html-node))
-	       (:file "hextml-macro" :depends-on (package))
-	       (:file "hextml-macro-declaration" :depends-on (package html-node html-id html-if html-do hextml-macro))
-	       (:file "build" :depends-on (package html-node parse
-						   hextml-macro hextml-macro-declaration))
-	       (:file "output" :depends-on (package html-node parse
-						   hextml-macro hextml-macro-declaration))
-	       (:file "rewrite" :depends-on (package annotation html-node html-if html-do))
-	       (:file "resolve" :depends-on (package html-node rewrite html-if html-do))
-	       (:file "optimize" :depends-on (package annotation html-node html-id html-if html-do))
-	       (:file "render" :depends-on (package annotation html-node html-id html-if html-do))
-	       (:file "compile" :depends-on (package annotation html-node html-id html-if html-do render))
-	       (:file "load" :depends-on (package build))))
+	       (:file "annotation")
+               (:file "html-node")
+               (:file "html-id")
+               (:file "html-if")
+               (:file "html-do")
+               (:file "var-finder")
+               (:file "parse")
+               (:file "hextml-macro")
+               (:file "hextml-macro-declaration")
+               (:file "build")
+               (:file "output")
+               (:file "rewrite")
+               (:file "resolve")
+               (:file "optimize")
+               (:file "render")
+               (:file "compile")
+               (:file "load")))
