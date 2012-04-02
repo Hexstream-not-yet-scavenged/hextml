@@ -1,4 +1,4 @@
-(in-package #:hextml_html-id)
+(in-package #:hextml)
 
 (defclass html-id ()
   ((id :reader html-id-id)))

@@ -1,4 +1,4 @@
-(in-package #:hextml_html-if)
+(in-package #:hextml)
 
 (defclass html-if ()
   ((condition :reader html-if-condition)

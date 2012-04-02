@@ -1,4 +1,4 @@
-(in-package #:hextml_resolve)
+(in-package #:hextml)
 
 (defclass html-resolver (html-rewriter template-env-mixin)
   ())

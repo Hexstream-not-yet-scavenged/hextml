@@ -1,4 +1,4 @@
-(in-package #:hextml_rewrite)
+(in-package #:hextml)
 
 (defvar *html-context* nil)
 

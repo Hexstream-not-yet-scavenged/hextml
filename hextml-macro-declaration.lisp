@@ -1,4 +1,4 @@
-(in-package #:hextml_front)
+(in-package #:hextml)
 
 (declare-html-noprocess quote)
 (declare-html-noprocess build-html)

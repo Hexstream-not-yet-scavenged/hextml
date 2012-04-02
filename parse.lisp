@@ -1,4 +1,4 @@
-(in-package #:hextml_front)
+(in-package #:hextml)
 
 (defun form-with-operator-p (form operator)
   (and (consp form)

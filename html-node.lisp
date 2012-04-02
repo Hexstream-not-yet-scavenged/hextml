@@ -1,4 +1,4 @@
-(in-package #:hextml_html-node)
+(in-package #:hextml)
 
 (defclass html-node ()
   ((type :initarg :type

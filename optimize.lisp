@@ -1,4 +1,4 @@
-(in-package #:hextml_optimize)
+(in-package #:hextml)
 
 (defclass html-optimizer ()
   ())

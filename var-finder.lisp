@@ -1,4 +1,4 @@
-(in-package #:hextml_var-finder)
+(in-package #:hextml)
 
 (defun find-vars (html)
   (delete-duplicates (vars-find html)

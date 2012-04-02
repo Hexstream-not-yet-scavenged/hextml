@@ -1,4 +1,4 @@
-(in-package #:hextml_front)
+(in-package #:hextml)
 
 (defmacro build-html (&body forms)
   (if (cdr forms)

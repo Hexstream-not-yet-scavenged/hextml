@@ -1,4 +1,4 @@
-(in-package #:hextml_compile)
+(in-package #:hextml)
 
 (defclass html-compiler ()
   ())

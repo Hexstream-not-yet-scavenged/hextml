@@ -1,4 +1,4 @@
-(in-package #:hextml_annotation)
+(in-package #:hextml)
 
 (defclass hextml-annotation ()
   ((target :initarg :target

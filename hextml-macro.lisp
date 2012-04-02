@@ -1,4 +1,4 @@
-(in-package #:hextml_front)
+(in-package #:hextml)
 
 (define-macro-system
     *hextml-macro-functions*

@@ -1,4 +1,4 @@
-(in-package #:hextml_render)
+(in-package #:hextml)
 
 (defclass html-renderer (template-env-mixin)
   ())

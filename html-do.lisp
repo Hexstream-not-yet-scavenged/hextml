@@ -1,4 +1,4 @@
-(in-package #:hextml_html-do)
+(in-package #:hextml)
 
 (defclass html-do ()
   ((var :initarg :var

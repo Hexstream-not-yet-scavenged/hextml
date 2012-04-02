@@ -1,4 +1,4 @@
-(in-package #:hextml_load)
+(in-package #:hextml)
 
 (defvar *load-package* (make-package '#:hextml-i18n-load))
 
